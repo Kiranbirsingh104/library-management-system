@@ -38,19 +38,6 @@ def home(request):
 
     return render(request, 'home.html', context)
 
-@login_required
-def books(request):
-
-    query = request.GET.get('q')
-
-    if query:
-        books = Book.objects.filter(title__icontains=query)
-    else:
-        books = Book.objects.all()
-
-    return render(request,
-                  'books.html',
-                  {'books': books})
 
 @login_required
 @admin_only
@@ -378,4 +365,17 @@ def manage_books(request):
 
     return render(request,
                   'manage_books.html',
+                  {'books': books})
+@login_required
+def books(request):
+
+    query = request.GET.get('q')
+
+    if query:
+        books = Book.objects.filter(title__icontains=query)
+    else:
+        books = Book.objects.all()
+
+    return render(request,
+                  'books.html',
                   {'books': books})
