@@ -267,7 +267,7 @@ def user_login(request):
 
     if request.method == 'POST':
 
-        role = request.POST['role']
+        role = request.POST.get('role')
         username = request.POST['username']
         password = request.POST['password']
 

@@ -9,7 +9,7 @@
         <div class="card shadow p-4">
 
             <h2 class="text-center mb-4">
-                Login
+                Library Login
             </h2>
 
             {% if error %}
@@ -23,6 +23,27 @@
             <form method="POST">
 
                 {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Login As
+                    </label>
+
+                    <select name="role"
+                            class="form-control">
+
+                        <option value="admin">
+                            Admin
+                        </option>
+
+                        <option value="user">
+                            User
+                        </option>
+
+                    </select>
+
+                </div>
 
                 <div class="mb-3">
 
