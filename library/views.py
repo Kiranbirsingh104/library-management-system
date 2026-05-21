@@ -280,6 +280,7 @@ def user_login(request):
 
     if request.method == 'POST':
 
+        role = request.POST['role']
         username = request.POST['username']
         password = request.POST['password']
 
@@ -291,9 +292,23 @@ def user_login(request):
 
         if user is not None:
 
-            login(request, user)
+            # ADMIN LOGIN
+            if role == "admin" and user.is_superuser:
 
-            return redirect('home')
+                login(request, user)
+
+                return redirect('home')
+
+            # USER LOGIN
+            elif role == "user" and not user.is_superuser:
+
+                login(request, user)
+
+                return redirect('home')
+
+            else:
+
+                error = "Invalid Role Selection"
 
         else:
 
