@@ -369,3 +369,13 @@ def master_memberships(request):
     return render(request,
                   'master_memberships.html',
                   {'members': members})
+
+@login_required
+@admin_only
+def manage_books(request):
+
+    books = Book.objects.all()
+
+    return render(request,
+                  'manage_books.html',
+                  {'books': books})

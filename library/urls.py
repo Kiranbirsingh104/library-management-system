@@ -72,6 +72,10 @@ urlpatterns = [
     path('master-memberships/',
          views.master_memberships,
          name='master_memberships'),
+
+    path('manage-books/',
+         views.manage_books,
+         name='manage_books'),
     
 
 ]
