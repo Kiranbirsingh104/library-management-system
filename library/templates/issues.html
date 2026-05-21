@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Issued Books
+</h2>
+
+<div class="mb-3">
+
+    <a href="/issue-book/"
+       class="btn btn-dark">
+
+        Issue New Book
+
+    </a>
+
+</div>
+
+<table class="table table-bordered table-striped">
+
+    <tr>
+        <th>ID</th>
+        <th>Member</th>
+        <th>Book</th>
+        <th>Issue Date</th>
+        <th>Return Date</th>
+        <th>Status</th>
+    </tr>
+
+    {% for issue in issues %}
+
+    <tr>
+
+        <td>{{ issue.id }}</td>
+
+        <td>{{ issue.member.user.username }}</td>
+
+        <td>{{ issue.book.title }}</td>
+
+        <td>{{ issue.issue_date }}</td>
+
+        <td>{{ issue.return_date }}</td>
+
+        <td>
+
+            {% if issue.returned %}
+
+                <span class="badge bg-success">
+                    Returned
+                </span>
+
+            {% else %}
+
+                <span class="badge bg-danger">
+                    Issued
+                </span>
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

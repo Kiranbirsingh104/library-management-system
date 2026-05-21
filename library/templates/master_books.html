@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Master List of Books
+</h2>
+
+<table class="table table-bordered table-striped">
+
+    <tr>
+
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Category</th>
+        <th>Total Quantity</th>
+        <th>Available</th>
+
+    </tr>
+
+    {% for book in books %}
+
+    <tr>
+
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.category }}</td>
+        <td>{{ book.quantity }}</td>
+        <td>{{ book.available }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

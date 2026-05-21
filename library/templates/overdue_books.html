@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Overdue Books
+</h2>
+
+<table class="table table-bordered table-striped">
+
+    <tr>
+        <th>Member</th>
+        <th>Book</th>
+        <th>Return Date</th>
+        <th>Fine</th>
+    </tr>
+
+    {% for issue in issues %}
+
+    <tr>
+
+        <td>{{ issue.member.user.username }}</td>
+
+        <td>{{ issue.book.title }}</td>
+
+        <td>{{ issue.return_date }}</td>
+
+        <td>₹ {{ issue.fine }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Return Book
+</h2>
+
+<table class="table table-bordered table-striped">
+
+    <tr>
+
+        <th>ID</th>
+        <th>Member</th>
+        <th>Book</th>
+        <th>Return Date</th>
+        <th>Fine</th>
+        <th>Fine Status</th>
+        <th>Action</th>
+
+    </tr>
+
+    {% for issue in issues %}
+
+    <tr>
+
+        <td>{{ issue.id }}</td>
+
+        <td>{{ issue.member.user.username }}</td>
+
+        <td>{{ issue.book.title }}</td>
+
+        <td>{{ issue.return_date }}</td>
+
+        <td>
+
+            {% if issue.fine > 0 %}
+
+                ₹ {{ issue.fine }}
+
+            {% else %}
+
+                No Fine
+
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            {% if issue.fine > 0 %}
+
+                {% if issue.fine_paid %}
+
+                    <span class="badge bg-success">
+                        Paid
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-danger">
+                        Pending
+                    </span>
+
+                {% endif %}
+
+            {% else %}
+
+                <span class="badge bg-success">
+                    No Fine
+                </span>
+
+            {% endif %}
+
+        </td>
+
+        <td>
+
+            {% if issue.fine > 0 and not issue.fine_paid %}
+
+                <a href="/pay-fine/{{ issue.id }}"
+                   class="btn btn-warning btn-sm">
+
+                    Pay Fine
+
+                </a>
+
+            {% else %}
+
+                <a href="/return-book-confirm/{{ issue.id }}"
+                   class="btn btn-success btn-sm">
+
+                    Return
+
+                </a>
+
+            {% endif %}
+
+        </td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}

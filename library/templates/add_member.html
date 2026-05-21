@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="card shadow p-4">
+
+            <h2 class="text-center mb-4">
+                Add Member
+            </h2>
+
+            {% if error %}
+
+            <div class="alert alert-danger">
+                {{ error }}
+            </div>
+
+            {% endif %}
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Username
+                    </label>
+
+                    <input type="text"
+                           name="username"
+                           class="form-control"
+                           required>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Password
+                    </label>
+
+                    <input type="password"
+                           name="password"
+                           class="form-control"
+                           required>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Phone Number
+                    </label>
+
+                    <input type="text"
+                           name="phone"
+                           class="form-control"
+                           required>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Membership Type
+                    </label>
+
+                    <select name="membership"
+                            class="form-control">
+
+                        {% for membership in memberships %}
+
+                        <option value="{{ membership.id }}">
+
+                            {{ membership.membership_type }}
+
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-dark w-100">
+
+                    Add Member
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    Reports Dashboard
+</h2>
+
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card shadow p-4 mb-4">
+
+            <h4>Master List of Books</h4>
+
+            <a href="/books"
+               class="btn btn-dark mt-3">
+
+                View Report
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow p-4 mb-4">
+
+            <h4>Master List of Memberships</h4>
+
+            <a href="/members"
+               class="btn btn-dark mt-3">
+
+                View Report
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow p-4 mb-4">
+
+            <h4>Active Issues</h4>
+
+            <a href="/issues"
+               class="btn btn-dark mt-3">
+
+                View Report
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow p-4 mb-4">
+
+            <h4>Overdue Returns</h4>
+
+            <a href="/overdue-books"
+               class="btn btn-dark mt-3">
+
+                View Report
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

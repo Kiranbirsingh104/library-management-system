@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-md-6">
+
+        <div class="card shadow p-4">
+
+            <h2 class="text-center mb-4">
+                Issue Book
+            </h2>
+
+            {% if error %}
+
+            <div class="alert alert-danger">
+                {{ error }}
+            </div>
+
+            {% endif %}
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Select Member
+                    </label>
+
+                    <select name="member"
+                            class="form-control">
+
+                        {% for member in members %}
+
+                        <option value="{{ member.id }}">
+                            {{ member.user.username }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Select Book
+                    </label>
+
+                    <select name="book"
+                            class="form-control">
+
+                        {% for book in books %}
+
+                        <option value="{{ book.id }}">
+                            {{ book.title }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        Return Date
+                    </label>
+
+                    <input type="date"
+                           name="return_date"
+                           class="form-control"
+                           required>
+
+                </div>
+
+                <button type="submit"
+                        class="btn btn-dark w-100">
+
+                    Issue Book
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
