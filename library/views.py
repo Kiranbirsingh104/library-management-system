@@ -366,6 +366,7 @@ def manage_books(request):
     return render(request,
                   'manage_books.html',
                   {'books': books})
+
 @login_required
 def books(request):
 
